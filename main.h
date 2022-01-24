@@ -5,13 +5,13 @@
 #define RCC_AHB1RSTR        ((uint32_t*)0x40023810U)
 #define RCC_APB1ENR         ((uint32_t*)0x40023840U)
 #define RCC_APB1RSTR        ((uint32_t*)0x40023820U)
-#define GPIOA_BASE          ((uint32_t*)0x40020000U)
+#define GPIOA_MODER          ((uint32_t*)0x40020000U)
 #define GPIOA_ODR           ((uint32_t*)0x40020014U)
 #define GPIOA_AFRL          ((uint32_t*)0x40020020U)
 #define SCB_SHCSR           ((uint32_t*)0xE000ED24U)
 #define SCB_SHPR3           ((uint32_t*)0xE000ED20U)
 #define SCB_ICSR            ((uint32_t*)0xE000ED04U)
-#define STK_SRVR            ((uint32_t*)0xE000E014U)
+#define STK_LOAD            ((uint32_t*)0xE000E014U)
 #define STK_SCSR            ((uint32_t*)0xE000E010U) 
 
 #define USART6              ((uint32_t*)0x40011400U) 
@@ -59,5 +59,13 @@ typedef struct{
 void osDelay(uint32_t tick_count);
 uint32_t osCreateThread(void (*osTCB_TaskHandler)(void));
 void osDeleteThread();
+uint32_t osScan(char *string, uint32_t length);
+void osPrint(char *string, uint32_t length);
+void osPrintLineBreak();
+
+uint32_t osLock(char *string);
+uint32_t osClearLock(char *string);
+uint32_t osCheckLock(char *string);
+
 
 #endif

@@ -12,6 +12,19 @@ osTaskControlBlock_t osUserThreads[MAX_TASKS];
  * 
  * @return      Task number from the task Control block or -1 if no more task can b created.
  */
+void osInitializeTCB(void){
+    for(int i=0;i<MAX_TASKS;i++){
+        osUserThreads[i].osTCB_CurrentState = TASK_INVALID_STATE;
+    }
+}
+
+/**
+ * @brief   Creates are new task thread.
+ *
+ * @param[in]  osTCB_TaskHandler      Pointer to function that is starting point to this task thread.
+ * 
+ * @return      Task number from the task Control block or -1 if no more task can b created.
+ */
 uint32_t osCreateThread(void (*osTCB_TaskHandler)(void)){
     uint32_t *pPSP;
     for(int i=0;i<MAX_TASKS;i++){
@@ -135,8 +148,8 @@ void osInitializeUART2(){
     *RCC_APB1RSTR |= (1<<17);   /*Reset APB1*/
     *RCC_APB1RSTR &= ~(1<<17);
 
-    *GPIOA_BASE |= (0b10 << 4);   /*Set GPIOA pin2 AF*/
-    *GPIOA_BASE |= (0b10 << 6);   /*Set GPIOA pin3 AF*/
+    *GPIOA_MODER |= (0b10 << 4);   /*Set GPIOA pin2 AF*/
+    *GPIOA_MODER |= (0b10 << 6);   /*Set GPIOA pin3 AF*/
 
     *GPIOA_AFRL |= (0b0111 << 8);   /*AF7 for A2*/
     *GPIOA_AFRL |= (0b0111 << 12);  /*AF7 for A3*/
@@ -222,7 +235,7 @@ void osInitializeSystick(uint32_t tick_hz){
     uint32_t count_value = (SYSTICK_TIM_CLK/tick_hz)-1;
 
     //load the value in SVR
-    *STK_SRVR = count_value;
+    *STK_LOAD = count_value;
 
     //update SCSR to trigger systick interrupts
     *STK_SCSR |= (1 << 1); //Enables systick exception request
@@ -375,7 +388,7 @@ int main(void){
     *RCC_AHB1ENR = 1;           /*Enable GPIOA*/
     *RCC_AHB1RSTR = 1;          /*Reset GPIOA*/
     *RCC_AHB1RSTR = 0;
-    *GPIOA_BASE |= (1 << 10);   /*Set GPIOA pin5 mode to output*/
+    *GPIOA_MODER |= (1 << 10);   /*Set GPIOA pin5 mode to output*/
 
     *GPIOA_ODR |= (1 << 5);     /*turn LED on*/
     

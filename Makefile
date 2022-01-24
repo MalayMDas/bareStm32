@@ -1,4 +1,4 @@
-PROGRAM=bare
+PROGRAM=barestm32
 OBJECTS=main.o system_stm32f4xx.o startup_stm32f446re.o
 
 TARGET_FLAGS=\
@@ -31,7 +31,7 @@ $(PROGRAM): $(OBJECTS)
 	arm-none-eabi-gcc $(LDFLAGS) -o $@ $(OBJECTS)
 
 flash:
-	openocd -f stm32f446re.cfg -c "program $(PROGRAM) verify reset exit"
+	openocd -f openocd.cfg -c "program $(PROGRAM) verify reset exit"
 
 debug:
 	arm-none-eabi-gdb -ex "target remote localhost:4242" $(PROGRAM)
@@ -40,6 +40,6 @@ clean:
 	rm *.o bare
 
 gdb:
-	arm-none-eabi-gdb -q $(PROGRAM) -x gdb_f446re.cfg
+	arm-none-eabi-gdb -q $(PROGRAM) -x gdb.cfg
 
 .PHONY: flash debug clean gdb	
