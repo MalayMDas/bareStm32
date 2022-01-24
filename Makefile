@@ -37,7 +37,7 @@ debug:
 	arm-none-eabi-gdb -ex "target remote localhost:4242" $(PROGRAM)
 
 clean:
-	rm *.o bare
+	rm *.o $(PROGRAM)
 
 gdb:
 	arm-none-eabi-gdb -q $(PROGRAM) -x gdb.cfg
