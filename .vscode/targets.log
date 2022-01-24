@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jan 15 19:34:18 2022
+# Make data base, printed on Sun Jan 23 21:48:53 2022
 
 # Variables
 
@@ -19,7 +19,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e7cdfe89-6672-4876-80e7-6207238ca7b9.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2e19d606-ff0f-417d-9760-4ecbb258dc4f.sock
 # environment
 LC_NAME = en_US.UTF-8
 # environment
@@ -27,7 +27,7 @@ LC_NUMERIC = en_US.UTF-8
 # environment
 VSCODE_CWD = /run/media/malay/6be2233d-18c3-46f3-acec-b4e06d2e1a6a/ManjaroWork/Gits/bareStm32
 # environment
-WINDOWID = 69206019
+WINDOWID = 67108867
 # environment
 LC_ADDRESS = en_US.UTF-8
 # environment
@@ -73,7 +73,7 @@ XAUTHORITY = /home/malay/.Xauthority
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # makefile (from 'Makefile', line 1)
-PROGRAM = bare
+PROGRAM = barestm32
 # makefile
 MAKEFLAGS = pqrR
 # makefile
@@ -193,7 +193,7 @@ LOGNAME = malay
 # environment
 XDG_VTNR = 7
 # makefile
-.DEFAULT_GOAL := bare
+.DEFAULT_GOAL := barestm32
 # environment
 EDITOR = /usr/bin/nano
 # environment
@@ -279,9 +279,9 @@ LC_IDENTIFICATION = en_US.UTF-8
 
 # Directories
 
-# . (device 2050, inode 14221651): 16 files, no impossibilities.
+# . (device 2050, inode 14221651): 18 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 18 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -297,6 +297,7 @@ LC_IDENTIFICATION = en_US.UTF-8
 # Files
 
 debug:
+ 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -304,11 +305,10 @@ debug:
 #  recipe to execute (from 'Makefile', line 37):
 	arm-none-eabi-gdb -ex "target remote localhost:4242" $(PROGRAM)
 
- 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-13 10:16:06.248068695
+#  Last modified 2022-01-23 21:30:08.498766662
 #  File has been updated.
 #  Successfully updated.
 
@@ -318,7 +318,7 @@ flash:
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 34):
-	openocd -f stm32f446re.cfg -c "program $(PROGRAM) verify reset exit"
+	openocd -f openocd.cfg -c "program $(PROGRAM) verify reset exit"
 
 clean:
 #  Phony target (prerequisite of .PHONY).
@@ -359,7 +359,7 @@ main.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-bare: main.o system_stm32f4xx.o startup_stm32f446re.o
+barestm32: main.o system_stm32f4xx.o startup_stm32f446re.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -377,22 +377,22 @@ gdb:
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 43):
-	arm-none-eabi-gdb -q $(PROGRAM) -x gdb_f446re.cfg
+	arm-none-eabi-gdb -q $(PROGRAM) -x gdb.cfg
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=1/30=3%
+# Load=13/1024=1%, Rehash=0, Collisions=0/30=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 29 / storage = 290 B / avg = 10 B
-# current buf: size = 8162 B / used = 290 B / count = 29 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 31 / storage = 296 B / avg = 9 B
+# current buf: size = 8162 B / used = 296 B / count = 31 / avg = 9 B
 
-# strcache performance: lookups = 48 / hit rate = 39%
+# strcache performance: lookups = 50 / hit rate = 38%
 # hash-table stats:
-# Load=29/8192=0%, Rehash=0, Collisions=0/48=0%
-# Finished Make data base on Sat Jan 15 19:34:18 2022
+# Load=31/8192=0%, Rehash=0, Collisions=0/50=0%
+# Finished Make data base on Sun Jan 23 21:48:53 2022
 
  

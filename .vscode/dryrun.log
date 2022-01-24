@@ -2,8 +2,7 @@ make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/run/media/malay/6be2233d-18c3-46f3-acec-b4e06d2e1a6a/ManjaroWork/Gits/bareStm32'
 arm-none-eabi-gcc -g -Wall -Wextra -Werror --specs=nosys.specs -mcpu=cortex-m4 -mthumb -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb-interwork -ICIMSIS -DSTM32F429_439xx -DHSE_VALUE=8000000 -c -o main.o main.c
 arm-none-eabi-gcc -g -Wall -Wextra -Werror --specs=nosys.specs -mcpu=cortex-m4 -mthumb -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb-interwork -ICIMSIS -DSTM32F429_439xx -DHSE_VALUE=8000000 -c -o system_stm32f4xx.o system_stm32f4xx.c
- 
 arm-none-eabi-gcc -g -Wall -Wextra -Werror --specs=nosys.specs -mcpu=cortex-m4 -mthumb -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb-interwork -ICIMSIS -DSTM32F429_439xx -DHSE_VALUE=8000000 -c -o startup_stm32f446re.o startup_stm32f446re.s
-arm-none-eabi-gcc --specs=nosys.specs -mcpu=cortex-m4 -mthumb -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb-interwork -Wl,-Tstm32f446re.ld -o bare main.o system_stm32f4xx.o startup_stm32f446re.o
+arm-none-eabi-gcc --specs=nosys.specs -mcpu=cortex-m4 -mthumb -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb-interwork -Wl,-Tstm32f446re.ld -o barestm32 main.o system_stm32f4xx.o startup_stm32f446re.o
 make: Leaving directory '/run/media/malay/6be2233d-18c3-46f3-acec-b4e06d2e1a6a/ManjaroWork/Gits/bareStm32'
  
