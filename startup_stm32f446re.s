@@ -71,8 +71,6 @@ loop_clear_bss:
    cmp r2, r3
    bcc clear_bss
 
-   bl system_init
-
    bl main
 
 .size Reset_Handler, .-Reset_Handler

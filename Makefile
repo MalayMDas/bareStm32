@@ -1,5 +1,5 @@
 PROGRAM=barestm32
-OBJECTS=main.o system_stm32f4xx.o startup_stm32f446re.o
+OBJECTS=main.o startup_stm32f446re.o
 
 TARGET_FLAGS=\
 	--specs=nosys.specs\
@@ -12,10 +12,7 @@ TARGET_FLAGS=\
 
 CFLAGS=\
 	-g -Wall -Wextra -Werror\
-	$(TARGET_FLAGS)\
-	-ICIMSIS\
-	-DSTM32F429_439xx\
-	-DHSE_VALUE=8000000
+	$(TARGET_FLAGS)
 
 LDFLAGS=\
 	$(TARGET_FLAGS)\
